@@ -32,7 +32,7 @@ return [
 
     'logo' => '<b>Test</b>',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>Test</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
 
     'logout_url' => 'logout',
 
