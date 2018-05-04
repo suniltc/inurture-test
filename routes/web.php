@@ -17,7 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::group(['middleware' => ['auth', 'role:admin']], function() {
+	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('save-course', 'HomeController@saveCourse')->name('save-course');
+Route::group(['middleware' => ['auth', 'role:user']], function() {
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::post('save-course', 'HomeController@saveCourse')->name('save-course');
+	Route::get('/view-courses', 'HomeController@viewCourses')->name('view-courses');
+});

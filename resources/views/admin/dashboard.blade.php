@@ -11,66 +11,63 @@
     <section class="content">
       	<!-- Small boxes (Stat box) -->
       	<div class="row">
-        	<div class="col-lg-3 col-xs-6">
+        	<div class="col-lg-6 col-xs-6">
           	<!-- small box -->
           		<div class="small-box bg-aqua">
             		<div class="inner">
-              		<h3>150</h3>
-              		<p>New Orders</p>
+              		<h3>{{ $number_of_users }}</h3>
+              		<p>Number of users</p>
             	</div>
             	<div class="icon">
               		<i class="ion ion-bag"></i>
             	</div>
-            		<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           		</div>
         	</div>
         	
         	<!-- ./col -->
-        	<div class="col-lg-3 col-xs-6">
+        	<div class="col-lg-6 col-xs-6">
           	<!-- small box -->
           		<div class="small-box bg-green">
             		<div class="inner">
-              			<h3>53<sup style="font-size: 20px">%</sup></h3>
-              			<p>Bounce Rate</p>
+              			<h3>{{ $number_of_courses }}</h3>
+              			<p>Number of courses</p>
             		</div>
             		<div class="icon">
 			            <i class="ion ion-stats-bars"></i>
 			        </div>
-            		<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           		</div>
         	</div>
-       		
-       		<!-- ./col -->
-       	 	<div class="col-lg-3 col-xs-6">
-          		<!-- small box -->
-          		<div class="small-box bg-yellow">
-            		<div class="inner">
-              		<h3>44</h3>
-              	<p>User Registrations</p>
-            </div>
-            <div class="icon">
-              	<i class="ion ion-person-add"></i>
-            </div>
-            	<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          	</div>
-        </div>
-
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          	<!-- small box -->
-          	<div class="small-box bg-red">
-            	<div class="inner">
-              		<h3>65</h3>
-              		<p>Unique Visitors</p>
-            	</div>
-            	<div class="icon">
-             		<i class="ion ion-pie-graph"></i>
-            	</div>
-            	<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          	</div>
-        </div>
-        <!-- ./col -->
     </div>
       <!-- /.row -->
       <!-- Main row -->
+
+      <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">CourseWise Number of students</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Number of Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($number_of_coursewise_students as $student)
+                        <tr>
+                            <td>{{ $student->name }}</td>
+                            <td>{{ $student->students }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Number of Students</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
 @stop

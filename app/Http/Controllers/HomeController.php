@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Auth;
 use App\Course;
+use App\User;
+use DB;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,16 @@ class HomeController extends Controller
      */
 
     public function dashboard(){
-        return view('admin/dashboard');
+        $number_of_users=User::count();
+        $number_of_courses=Course::distinct()->get(['course_id'])->count();
+
+        $number_of_coursewise_students= Course::select('name', DB::raw('count(*) as students'))->groupBy('name')->get();
+
+        return view('admin/dashboard', [
+            'number_of_users' => $number_of_users,
+            'number_of_courses' => $number_of_courses,
+            'number_of_coursewise_students' => $number_of_coursewise_students
+        ]);
     }
 
     public function index()
@@ -47,5 +58,11 @@ class HomeController extends Controller
             return redirect('home')->with('success', 'saved successfully');
         }
         return redirect('home')->with('error', 'something went wrong');
+    }
+
+    public function viewCourses(){
+        $user_id= Auth::user()->id;
+        $courses=Course::where('user_id', $user_id)->get();
+        return view('view-courses', ['courses' => $courses]);
     }
 }
