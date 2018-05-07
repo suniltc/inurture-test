@@ -35,9 +35,9 @@
                         <tbody>
                             @foreach($courses['elements'] as $course)
                                 <tr>
-                                    <td><input type="text" class="form-control no-border" name="course_id" value="{{ $course['id'] }}" readonly /></td>
-                                    <td><input type="text" class="form-control no-border" name="course_type" value="{{ $course['courseType'] }}" readonly /></td>
-                                    <td><input type="text" class="form-control no-border" name="name" value="{{ $course['name'] }}" readonly /></td>
+                                    <td><input type="text" class="form-control" name="course_id" value="{{ $course['id'] }}" readonly /></td>
+                                    <td><input type="text" class="form-control" name="course_type" value="{{ $course['courseType'] }}" readonly /></td>
+                                    <td><input type="text" class="form-control" name="name" value="{{ $course['name'] }}" readonly /></td>
                                     <td><button type="submit" class="btn btn-success">Save</button></td>
                                 </tr>
                             @endforeach
